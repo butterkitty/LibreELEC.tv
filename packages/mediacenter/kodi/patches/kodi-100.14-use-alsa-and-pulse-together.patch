@@ -102,19 +102,19 @@ index a714192..4b52e39 100644
    m_dpms = std::make_shared<CGBMDPMSSupport>();
    CLinuxPowerSyscall::Register();
 diff --git a/xbmc/windowing/rpi/WinSystemRpi.cpp b/xbmc/windowing/rpi/WinSystemRpi.cpp
-index 75fbe56..ac06490 100644
+index bdeb68c8c006..f5bc22c3cbdb 100644
 --- a/xbmc/windowing/rpi/WinSystemRpi.cpp
 +++ b/xbmc/windowing/rpi/WinSystemRpi.cpp
-@@ -10,7 +10,9 @@
- 
- #include "ServiceBroker.h"
+@@ -22,7 +22,9 @@
+ #include "guilib/DispResource.h"
+ #include "utils/log.h"
  #include "cores/AudioEngine/AESinkFactory.h"
 +#include "cores/AudioEngine/Sinks/AESinkALSA.h"
  #include "cores/AudioEngine/Sinks/AESinkPi.h"
 +#include "cores/AudioEngine/Sinks/AESinkPULSE.h"
- #include "guilib/DispResource.h"
- #include "settings/DisplaySettings.h"
- #include "settings/Settings.h"
+ #include "platform/linux/powermanagement/LinuxPowerSyscall.h"
+
+ #include <EGL/egl.h>
 @@ -46,19 +48,8 @@ CWinSystemRpi::CWinSystemRpi() :
    AE::CAESinkFactory::ClearSinks();
  

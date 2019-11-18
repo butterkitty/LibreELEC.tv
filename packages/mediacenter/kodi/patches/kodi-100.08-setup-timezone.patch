@@ -7,23 +7,23 @@ on TZ country setting change, store the value in format
 TIMEZONE=Xx/Yyy to /storage/.cache/timezone to be used with
 tz-data.service
 ---
- xbmc/platform/posix/PosixTimezone.cpp | 12 ++++++++++++
+ xbmc/platform/linux/LinuxTimezone.cpp | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-diff --git a/xbmc/platform/posix/PosixTimezone.cpp b/xbmc/platform/posix/PosixTimezone.cpp
+diff --git a/xbmc/platform/linux/LinuxTimezone.cpp b/xbmc/platform/linux/LinuxTimezone.cpp
 index 24840fc..c064951 100644
---- a/xbmc/platform/posix/PosixTimezone.cpp
-+++ b/xbmc/platform/posix/PosixTimezone.cpp
+--- a/xbmc/platform/linux/LinuxTimezone.cpp
++++ b/xbmc/platform/linux/LinuxTimezone.cpp
 @@ -26,6 +26,8 @@
  
  #include <algorithm>
  
 +#include <fstream>
 +
- CPosixTimezone::CPosixTimezone()
+ CLinuxTimezone::CLinuxTimezone()
  {
     char* line = NULL;
-@@ -143,6 +145,16 @@ void CPosixTimezone::OnSettingChanged(std::shared_ptr<const CSetting> setting)
+@@ -143,6 +145,16 @@ void CLinuxTimezone::OnSettingChanged(std::shared_ptr<const CSetting> setting)
    const std::string &settingId = setting->GetId();
    if (settingId == CSettings::SETTING_LOCALE_TIMEZONE)
    {

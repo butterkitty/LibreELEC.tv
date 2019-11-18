@@ -21,10 +21,10 @@ index d71e2d9..0387e55 100644
    int status = system(cmd.c_str());
  
    if (status == 0)
-diff --git a/xbmc/platform/posix/PosixMountProvider.cpp b/xbmc/platform/posix/PosixMountProvider.cpp
+diff --git a/xbmc/platform/linux/PosixMountProvider.cpp b/xbmc/platform/posix/PosixMountProvider.cpp
 index c22d7f8..69d8e10 100644
---- a/xbmc/platform/posix/PosixMountProvider.cpp
-+++ b/xbmc/platform/posix/PosixMountProvider.cpp
+--- a/xbmc/platform/linux/PosixMountProvider.cpp
++++ b/xbmc/platform/linux/PosixMountProvider.cpp
 @@ -123,7 +123,7 @@ bool CPosixMountProvider::Eject(const std::string& mountpath)
  #if !defined(TARGET_DARWIN_IOS)
    // just go ahead and try to umount the disk
