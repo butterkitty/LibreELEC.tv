@@ -290,6 +290,9 @@ post_makeinstall_target() {
         -e "s|@KODI_MAX_SECONDS@|${KODI_MAX_SECONDS:-900}|g" \
         -i $INSTALL/usr/lib/kodi/kodi.sh
 
+  mkdir -p $INSTALL/usr/lib/systemd/system
+    cp $PKG_DIR/system.d/kodi-mysqlcheck.sh $INSTALL/usr/lib/systemd/system
+
   mkdir -p $INSTALL/usr/sbin
     cp $PKG_DIR/scripts/service-addon-wrapper $INSTALL/usr/sbin
 
@@ -376,4 +379,5 @@ post_install() {
   enable_service kodi-waitonnetwork.service
   enable_service kodi.service
   enable_service kodi-lirc-suspend.service
+  enable_service kodi-mysqlcheck.service
 }
