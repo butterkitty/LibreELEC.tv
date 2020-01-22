@@ -2,11 +2,11 @@
 Description=Check for internet connection for possible Kodi mysql connection
 ConditionPathExists=/storage/.cache/libreelec/network_wait
 ConditionPathExists=/storage/.kodi/userdata/
+Before=network-online.target
+After=connman.service
 
 [Service]
 Type=oneshot
-Before=network-online.target
-After=connman.service
 EnvironmentFile=/storage/.cache/libreelec/network_wait
 ExecStart=/bin/sh -c '/usr/lib/systemd/system/kodi-mysqlcheck.sh ${WAIT_NETWORK_TIME}'
 RemainAfterExit=yes

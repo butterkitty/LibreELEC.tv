@@ -15,7 +15,7 @@ if grep -qF "<!--<musicdatabase>" ${advancedSettings} && awk '/<musicdatabase>/{
 fi
 
 
-while ! /bin/ping -c1 google.com ; do # If there is no real internet connection, loop through. Checking using google.com as a very reliable source
+while ! /bin/ping -c1 minecraft.inspirehub.com ; do # If there is no real internet connection, loop through. Checking using minecraft.inspirehub.com as it's where the database connection is
   if [ $counter -eq $maxCounter ]; then # If we've tried to ping for a real internet connection as many times as the network is set to wait
     if ! grep -qF "<!--<videodatabase>" ${advancedSettings} && awk '/<videodatabase>/{flag=1;next}/<\/videodatabase>/{flag=0}flag' ${advancedSettings} | grep -q "<type>mysql"; then # If the advancedsettings.xml is mysql enabled, disable it
       sed -i ':a;N;$!ba;s/<videodatabase>\(.*\)<\/videodatabase>/<!--&-->/g' ${advancedSettings}
