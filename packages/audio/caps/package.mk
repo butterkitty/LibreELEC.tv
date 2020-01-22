@@ -21,30 +21,14 @@ pre_make_target() {
 }
 
 make_target() {
-  ARCH="" LDFLAGS="" CFLAGS="" make
+  make \
+    ARCH="" \
+    #LDFLAGS="" 
+    #CFLAGS="" 
+    OPTS="-O3 -ffast-math -funroll-loops -Wall -fPIC -DPIC"
 }
 
 makeinstall_target() {
   make install
-}
-post_install() {
-  mkdir -p $INSTALL/usr/share/alsa
-  cat <<ENDOFasound > $INSTALL/usr/share/alsa/.asound.rc
-ctl.equal {
-	type equal;
-}
-
-pcm.plugequal {
-    type equal;
-	slave.pcm "plughw:0,0";
-}
-
-pcm.equal{
-    type plug;
-    slave.pcm plugequal;
-}
-ENDOFasound
-
-  enable_service alsa-equal.service
 }
 
