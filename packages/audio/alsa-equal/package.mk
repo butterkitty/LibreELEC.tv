@@ -11,12 +11,23 @@ PKG_TOOLCHAIN="manual"
 pre_make_target() {
   cd $PKG_BUILD
   mkdir -p $INSTALL/usr/lib/alsa-lib/
-  make clean
+  sed -i '/CC\(.*\)= gcc/d' ./Makefile
+  sed -i '/LD\(.*\)= gcc/d' ./Makefile
+  sed -i '/LDFLAGS :=\(.*\)/d' ./Makefile
+  sed -i '/CFLAGS :=\(.*\)/d' ./Makefile
 }
 make_target() {
-  make
+   make ARCH="" LDFLAGS="-O2 -shared -lasound" \
+    CFLAGS="-I. -O2 -funroll-loops -ffast-math -fPIC -DPIC"
 }
 makeinstall_target() {
-  DESTDIR="$INSTALL" make install
+    make DESTDIR=$INSTALL install
+}
+post_makeinstall_target() {
+  mkdir -p $INSTALL/usr/config
+    cp -PR $PKG_DIR/config/* $INSTALL/usr/config
+  mkdir -p $INSTALL/usr/lib/alsa/
+    mv $INSTALL/usr/lib/alsa-lib/* $INSTALL/usr/lib/alsa/
+    rm -r $INSTALL/usr/lib/alsa-lib
 }
 
