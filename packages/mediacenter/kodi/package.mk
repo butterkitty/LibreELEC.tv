@@ -1,4 +1,3 @@
-
 # SPDX-License-Identifier: GPL-2.0-or-later
 # Copyright (C) 2009-2016 Stephan Raue (stephan@openelec.tv)
 # Copyright (C) 2017-present Team LibreELEC (https://libreelec.tv)
@@ -211,13 +210,15 @@ configure_package() {
                          -DWITH_TEXTUREPACKER=$TOOLCHAIN/bin/TexturePacker \
                          -DWITH_JSONSCHEMABUILDER=$TOOLCHAIN/bin/JsonSchemaBuilder \
                          -DDEPENDS_PATH=$PKG_BUILD/depends \
+                         -DSWIG_EXECUTABLE=$TOOLCHAIN/bin/swig \
                          -DPYTHON_EXECUTABLE=$TOOLCHAIN/bin/$PKG_PYTHON_VERSION \
                          -DPYTHON_INCLUDE_DIRS=$SYSROOT_PREFIX/usr/include/$PKG_PYTHON_VERSION \
                          -DGIT_VERSION=$PKG_VERSION \
                          -DFFMPEG_PATH=$SYSROOT_PREFIX/usr \
                          -DENABLE_INTERNAL_FFMPEG=OFF \
                          -DENABLE_INTERNAL_CROSSGUID=OFF \
-						 -DENABLE_INTERNAL_UDFREAD=OFF \
+                         -DENABLE_INTERNAL_UDFREAD=OFF \
+                         -DENABLE_INTERNAL_SPDLOG=OFF \
                          -DENABLE_UDEV=ON \
                          -DENABLE_DBUS=ON \
                          -DENABLE_XSLT=ON \
@@ -228,6 +229,9 @@ configure_package() {
                          -DENABLE_DEBUGFISSION=OFF \
                          -DENABLE_APP_AUTONAME=OFF \
                          -DENABLE_INTERNAL_FLATBUFFERS=OFF \
+                         -DENABLE_TESTING=OFF \
+                         -DENABLE_INTERNAL_FLATBUFFERS=OFF \
+                         -DENABLE_LCMS2=OFF \
                          $PKG_KODI_USE_LTO \
                          $KODI_ARCH \
                          $KODI_NEON \
@@ -261,10 +265,6 @@ post_makeinstall_target() {
   rm -rf $INSTALL/usr/share/applications
   rm -rf $INSTALL/usr/share/icons
   rm -rf $INSTALL/usr/share/pixmaps
-  rm -rf $INSTALL/usr/share/kodi/addons/skin.estouchy
-  rm -rf $INSTALL/usr/share/kodi/addons/skin.estuary
-  rm -rf $INSTALL/usr/share/kodi/addons/service.xbmc.versioncheck
-  rm -rf $INSTALL/usr/share/kodi/addons/visualization.vortex
   rm -rf $INSTALL/usr/share/xsessions
 
   mkdir -p $INSTALL/usr/lib/kodi
@@ -276,6 +276,9 @@ post_makeinstall_target() {
     sed -e "s|@KODI_MAX_RESTARTS@|${KODI_MAX_RESTARTS:-5}|g" \
         -e "s|@KODI_MAX_SECONDS@|${KODI_MAX_SECONDS:-900}|g" \
         -i $INSTALL/usr/lib/kodi/kodi.sh
+
+  mkdir -p $INSTALL/usr/lib/systemd/system
+    cp $PKG_DIR/system.d/kodi-mysqlcheck.sh $INSTALL/usr/lib/systemd/system
 
   mkdir -p $INSTALL/usr/sbin
     cp $PKG_DIR/scripts/service-addon-wrapper $INSTALL/usr/sbin
@@ -368,4 +371,5 @@ post_install() {
   enable_service kodi-waitonnetwork.service
   enable_service kodi.service
   enable_service kodi-lirc-suspend.service
+  enable_service kodi-mysqlcheck.service
 }
