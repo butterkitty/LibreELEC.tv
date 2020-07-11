@@ -88,13 +88,14 @@ index 1b623d0..bfae2a9 100644
      CApplicationMessenger::GetInstance().Stop();
      m_AppFocused = false;
 -    m_ExitCode = exitCode;
-     CLog::Log(LOGINFO, "Stopping all");
+     CLog::Log(LOGNOTICE, "Stopping all");
  
      // cancel any jobs from the jobmanager
 @@ -4163,7 +4174,7 @@ void CApplication::ProcessSlow()
+
    if (CPlatformPosix::TestQuitFlag())
    {
-     CLog::Log(LOGINFO, "Quitting due to POSIX signal");
+     CLog::Log(LOGNOTICE, "Quitting due to POSIX signal");
 -    CApplicationMessenger::GetInstance().PostMsg(TMSG_QUIT);
 +    CApplicationMessenger::GetInstance().PostMsg(TMSG_RESTARTAPP);
    }
