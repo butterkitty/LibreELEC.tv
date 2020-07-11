@@ -3,9 +3,9 @@
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="pvr.demo"
-PKG_VERSION="6.0.0-Matrix"
-PKG_SHA256="75df5a910880ea290b53662a0bd08a3214e63614423b9dbd48fe544e8dddef59"
-PKG_REV="1"
+PKG_VERSION="3.6.1-Leia"
+PKG_SHA256="0d35d1bd968e67a504c16b222bbfb3b79e6f64c5bd430d567c8caf9940d1ebba"
+PKG_REV="3"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/kodi-pvr/pvr.demo"
