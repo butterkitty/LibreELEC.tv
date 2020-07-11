@@ -3,9 +3,9 @@
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="screensaver.greynetic"
-PKG_VERSION="2.3.1-Matrix"
-PKG_SHA256="c1ac7836769a40c549b9e4630af54d5b1b04331c6b2fa9ed2c7d2e6c4272ad16"
-PKG_REV="1"
+PKG_VERSION="2.2.1-Leia"
+PKG_SHA256="d95bc93d022b12fbfcbaedf1128292b40dd16276b65a3ffecb90707055e1d55f"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/xbmc/screensaver.greynetic"

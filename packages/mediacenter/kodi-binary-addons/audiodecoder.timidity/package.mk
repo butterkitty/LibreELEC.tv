@@ -3,8 +3,8 @@
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="audiodecoder.timidity"
-PKG_VERSION="2.3.0-Matrix"
-PKG_SHA256="181d0a9f9c81833ad3381593f7eb97da1a5fe0137ef621b736e45d930d633d2f"
+PKG_VERSION="2.2.0-Matrix"
+PKG_SHA256="e004bc74cfeb9aae72cd95dfd0aebc28a01d55f2da035ad19d3a46538593183e"
 PKG_REV="1"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
@@ -17,10 +17,6 @@ PKG_LONGDESC="audiodecoder.timidity"
 
 PKG_IS_ADDON="yes"
 PKG_ADDON_TYPE="kodi.audiodecoder"
-
-pre_configure_target() {
-  CFLAGS="$CFLAGS -fcommon"
-}
 
 addon() {
   install_binary_addon $PKG_ADDON_ID

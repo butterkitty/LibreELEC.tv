@@ -3,9 +3,9 @@
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
 
 PKG_NAME="screensaver.matrixtrails"
-PKG_VERSION="2.4.2-Matrix"
-PKG_SHA256="2d8d10d226ad01dfad571822c5cbd64ec6941fe3020e7dbe6a50fcdccf29cc54"
-PKG_REV="1"
+PKG_VERSION="v2.2.1-Leia"
+PKG_SHA256="2d2c795853c5a72184bb6720247d79c48b1d9fbc97e9c2913003a707d612e3ac"
+PKG_REV="4"
 PKG_ARCH="any"
 PKG_LICENSE="GPL"
 PKG_SITE="https://github.com/xbmc/screensaver.matrixtrails"
