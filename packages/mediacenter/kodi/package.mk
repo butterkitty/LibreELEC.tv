@@ -356,7 +356,7 @@ post_makeinstall_target() {
   fi
 
   # Compile kodi Python site-packages to .pyc bytecode, and remove .py source code
-  python_compile $INSTALL/usr/lib/$PKG_PYTHON_VERSION/site-packages/kodi
+  python2_compile $INSTALL/usr/lib/$PKG_PYTHON_VERSION/site-packages/kodi
 
   debug_strip $INSTALL/usr/lib/kodi/kodi.bin
 }
