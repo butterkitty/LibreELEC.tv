@@ -1,3 +1,4 @@
+#!/bin/bash
 startTime=$(date +%s)
 advancedSettings="/storage/.kodi/userdata/advancedsettings.xml"
 
@@ -13,7 +14,7 @@ fi
 if grep -qF "<!--<musicdatabase>" ${advancedSettings} && awk '/<musicdatabase>/{flag=1;next}/<\/musicdatabase>/{flag=0}flag' ${advancedSettings} | grep -q "<type>mysql"; then
   sed -i ':a;N;$!ba;s/<!--<musicdatabase>\(.*\)<\/musicdatabase>-->/<musicdatabase>\1<\/musicdatabase>/g' ${advancedSettings}
 fi
-
+curlTest=$(curl -sL --fail http://minecraft.inspirehub.com -o /dev/null; echo $?)
 
 while [[ $curlTest -ne 22 ]] && [[ $curlTest -ne 0 ]] ; do # If there is no real internet connection, loop through. Checking using google.com as a very reliable source
   if [ $(($(date +%s) - $startTime)) -ge $maxCounter ]; then # If we've tried to ping for a real internet connection as many times as the network is set to wait
