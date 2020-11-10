@@ -16,12 +16,6 @@ PKG_STAMP="$KERNEL_TARGET $KERNEL_MAKE_EXTRACMD"
 PKG_PATCH_DIRS="$LINUX"
 
 case "$LINUX" in
-  rockchip-4.4)
-    PKG_VERSION="aa8bacf821e5c8ae6dd8cae8d64011c741659945"
-    PKG_SHA256="a2760fe89a15aa7be142fd25fb08ebd357c5d855c41f1612cf47c6e89de39bb3"
-    PKG_URL="https://github.com/rockchip-linux/kernel/archive/$PKG_VERSION.tar.gz"
-    PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
-    ;;
   raspberrypi)
     PKG_VERSION="abaa3760da89d6fb38e55473fffc9a31dd0b1d7a" # 4.19.127
     PKG_SHA256="b7345333ee90949dabc8e7fa184c443dc43781bdd3703e2203ad084274b50f24"
@@ -29,8 +23,8 @@ case "$LINUX" in
     PKG_SOURCE_NAME="linux-$LINUX-$PKG_VERSION.tar.gz"
     ;;
   *)
-    PKG_VERSION="5.1.16"
-    PKG_SHA256="8a3e55be3e788700836db6f75875b4d3b824a581d1eacfc2fcd29ed4e727ba3e"
+    PKG_VERSION="5.5"
+    PKG_SHA256="A6FBD4EE903C128367892C2393EE0D9657B6ED3EA90016D4DC6F1F6DA20B2330"
     PKG_URL="https://www.kernel.org/pub/linux/kernel/v5.x/$PKG_NAME-$PKG_VERSION.tar.xz"
     PKG_PATCH_DIRS="default"
     ;;
